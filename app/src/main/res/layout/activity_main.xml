@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:contentDescription="@string/todo"
         app:srcCompat="@drawable/marvel_logo_psd_444569" />
 
     <EditText

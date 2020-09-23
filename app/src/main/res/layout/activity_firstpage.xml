@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
     <ImageView
@@ -24,48 +24,26 @@
         android:alpha="0.75"
         android:text="Play" />
 
+    <TextView
+        android:id="@+id/moreViews"
+        android:textColor="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:text="Populares na Marvel"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Rv_movies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView" />
-
-    <!--    <TableRow-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_below="@+id/carousel_view"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:background="#E40B14" >-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/editTextSearch"-->
-<!--                android:layout_width="335dp"-->
-<!--                android:layout_height="60dp"-->
-<!--                android:background="@drawable/rounded_text"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Search"-->
-<!--                android:inputType="text"-->
-<!--                android:paddingLeft="20dp" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/button2"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="5dp"-->
-<!--                android:background="@drawable/rounded_button"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:text="Go" />-->
-
-<!--        </LinearLayout>-->
-
-<!--    </TableRow>-->
+        android:layout_below="@id/imageView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="8dp" />
 
 </RelativeLayout>

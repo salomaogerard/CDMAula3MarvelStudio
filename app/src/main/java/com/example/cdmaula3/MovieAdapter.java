@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cdmaula3.models.Movie;
@@ -18,10 +19,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     Context context;
     List<Movie> movies;
+    MovieItemClickListener movieItemClickListener;
 
-    public MovieAdapter(Context context, List<Movie> movies) {
+    public MovieAdapter(Context context, List<Movie> movies, MovieItemClickListener listener) {
         this.context = context;
         this.movies = movies;
+        this.movieItemClickListener = listener;
     }
 
     @NonNull
@@ -57,6 +60,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
             TvTitle = itemView.findViewById(R.id.item_movie_title);
             imageMovie = itemView.findViewById(R.id.item_movie_img);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+
+                    movieItemClickListener.onMovieClick(movies.get(getAdapterPosition()), imageMovie);
+
+                }
+            });
 
         }
     }
