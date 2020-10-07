@@ -3,4 +3,13 @@
     <string name="forget_password">Forget Password?</string>
     <string name="sign_in">Sign In</string>
     <string name="create_new_account">Create New Account</string>
+    <string name="email">Email</string>
+    <string name="logomarvel">logoMarvel</string>
+    <string name="password">Password</string>
+    <string name="preencha_os_campos_abaixo_para_cadastrar">Preencha os campos abaixo para cadastrar:</string>
+    <string name="clean">clean</string>
+    <string name="sign_up">sign up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="logomarvelstudio2">logoMarvelStudio2</string>
+    <string name="logodisney">logoDisney</string>
 </resources>

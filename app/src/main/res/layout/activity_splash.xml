@@ -8,20 +8,22 @@
     android:background="#E40B14">
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/logoMarvel"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:contentDescription="@string/logomarvelstudio2"
         app:srcCompat="@drawable/marvel_logo_fist" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
+        android:layout_below="@+id/logoMarvel"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
+        android:contentDescription="@string/logomarvel"
         app:srcCompat="@drawable/marvel_logo_psd_444569" />
 
     <ImageView
@@ -31,6 +33,7 @@
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
+        android:contentDescription="@string/logodisney"
         app:srcCompat="@drawable/marvel_logo_all" />
 
 </RelativeLayout>
