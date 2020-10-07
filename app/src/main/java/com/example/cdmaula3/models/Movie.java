@@ -4,17 +4,17 @@ public class Movie {
 
     private String title;
     private String description;
-    private int thumbnail;
+    private String pathPoster;
 
-    public Movie(String title, int thumbnail) {
+    public Movie(String title, String pathPoster) {
         this.title = title;
-        this.thumbnail = thumbnail;
+        this.pathPoster = pathPoster;
     }
 
-    public Movie(String title, String description, int thumbnail) {
+    public Movie(String title, String description, String pathPoster) {
         this.title = title;
         this.description = description;
-        this.thumbnail = thumbnail;
+        this.pathPoster = pathPoster;
     }
 
     public String getTitle() {
@@ -33,11 +33,11 @@ public class Movie {
         this.description = description;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public String getPathPoster() {
+        return pathPoster;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setPathPoster(String pathPoster) {
+        this.pathPoster = pathPoster;
     }
 }

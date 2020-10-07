@@ -1,8 +1,10 @@
-package com.example.cdmaula3;
+package com.example.cdmaula3.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.cdmaula3.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
