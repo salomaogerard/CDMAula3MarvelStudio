@@ -15,14 +15,13 @@ import com.example.cdmaula3.R;
 import com.example.cdmaula3.models.Movie;
 import com.example.cdmaula3.services.MovieAdapterService;
 import com.example.cdmaula3.services.MovieContractServic;
-import com.example.cdmaula3.services.MovieItemClickListenerService;
 import com.example.cdmaula3.services.MoviePresenterService;
 
 import java.util.List;
 
 public class FirstPageActivity extends AppCompatActivity
         implements MovieContractServic.listMoviesView,
-        MovieItemClickListenerService {
+        MovieAdapterService.itemClickListenerService {
 
     private MovieAdapterService movieAdapter;
     private MovieContractServic.listMoviesPresenter presenter;
@@ -43,10 +42,8 @@ public class FirstPageActivity extends AppCompatActivity
         final RecyclerView recyclerMovies = findViewById(R.id.Rv_movies);
 
         movieAdapter = new MovieAdapterService( this);
-
-        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerMovies.setLayoutManager(linearLayoutManager);
         recyclerMovies.setAdapter(movieAdapter);
+        recyclerMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
     @Override

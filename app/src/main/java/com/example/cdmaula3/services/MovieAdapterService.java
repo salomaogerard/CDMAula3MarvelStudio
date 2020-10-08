@@ -18,12 +18,11 @@ import java.util.List;
 
 public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterService.MyViewHolder> {
 
-
     private List<Movie> movies;
-    private static MovieItemClickListenerService movieItemClickListener;
+    private static itemClickListenerService movieItemClickListener;
 
-    public MovieAdapterService(MovieItemClickListenerService listener) {
-        this.movieItemClickListener = listener;
+    public MovieAdapterService(itemClickListenerService movieItemClickListener) {
+        this.movieItemClickListener = movieItemClickListener;
 
         movies = new ArrayList<>();
     }
@@ -31,10 +30,9 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_movie, viewGroup,false);
-        return new MyViewHolder(view);
 
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -48,7 +46,6 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-
         private TextView tvTitle;
         private ImageView imageMovie;
         private Movie movie;
@@ -84,5 +81,9 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
         notifyDataSetChanged();
+    }
+
+    public interface itemClickListenerService {
+        void onMovieClick(Movie movie);
     }
 }

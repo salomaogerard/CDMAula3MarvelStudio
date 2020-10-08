@@ -1,5 +1,7 @@
 package com.example.cdmaula3.services;
 
+import android.util.Log;
+
 import com.example.cdmaula3.mapper.MovieMapper;
 import com.example.cdmaula3.models.Movie;
 import com.example.cdmaula3.services.response.MoviesResult;
@@ -37,6 +39,7 @@ public class MoviePresenterService  implements MovieContractServic.listMoviesPre
 
                     @Override
                     public void onFailure(Call<MoviesResult> call, Throwable t) {
+                        Log.e("show error", t.getMessage());
                         view.showError();
                     }
                 });
