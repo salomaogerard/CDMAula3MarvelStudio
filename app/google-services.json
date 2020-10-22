@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "414518080516",
+    "firebase_url": "https://marvelstudios-a4c2a.firebaseio.com",
+    "project_id": "marvelstudios-a4c2a",
+    "storage_bucket": "marvelstudios-a4c2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414518080516:android:31356cf83f431ed3bcb151",
+        "android_client_info": {
+          "package_name": "com.example.cdmaula3.activitys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414518080516-8d87rm9a4dgta411oq3u369doep38d93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cdmaula3.activitys",
+            "certificate_hash": "d124d24b3735619e8de53f27ee8c8076303a1ba8"
+          }
+        },
+        {
+          "client_id": "414518080516-jr4es02r0pkrmst0acfq262ph1ts120b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjeuwdbspxcXY3X-hI1XshkTYpdgKcR9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414518080516-jr4es02r0pkrmst0acfq262ph1ts120b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

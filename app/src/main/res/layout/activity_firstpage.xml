@@ -22,6 +22,14 @@
         android:alpha="0.75"
         android:text="Play" />
 
+    <Button
+        android:id="@+id/buttonSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Sign Out" />
+
     <TextView
         android:id="@+id/moreViews"
         android:textColor="@color/colorWhite"

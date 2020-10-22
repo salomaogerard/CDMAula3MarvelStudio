@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/botaoSignIn"
-        android:layout_width="335dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
@@ -64,13 +64,27 @@
         android:textSize="25sp"
         android:focusable="true" />
 
+    <Button
+        android:id="@+id/botaoSignInGoogle"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="20dp"
+        android:layout_below="@+id/botaoSignIn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/googleg_standard_color_18"
+        android:background="@drawable/rounded_button_white"
+        android:text="@string/sign_in_google"
+        android:textSize="17sp"/>
+
     <TextView
         android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/botaoSignIn"
+        android:layout_below="@+id/botaoSignInGoogle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:clickable="true"
         android:text="@string/forget_password"
         android:textColor="#FFFFFF"
@@ -83,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/forgetPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="60dp"
         android:clickable="true"
         android:text="@string/create_new_account"
         android:textColor="#FFFFFF"

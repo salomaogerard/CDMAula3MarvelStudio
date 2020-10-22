@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import com.example.cdmaula3.models.Movie;
 import com.example.cdmaula3.services.MovieAdapterService;
 import com.example.cdmaula3.services.MovieContractServic;
 import com.example.cdmaula3.services.MoviePresenterService;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -25,6 +28,8 @@ public class FirstPageActivity extends AppCompatActivity
 
     private MovieAdapterService movieAdapter;
     private MovieContractServic.listMoviesPresenter presenter;
+    private Button buttonSignOut;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,20 @@ public class FirstPageActivity extends AppCompatActivity
 
         configurateAdapter();
 
+        buttonSignOut = findViewById(R.id.buttonSignOut);
+        firebaseAuth = FirebaseAuth.getInstance();
+
         presenter = new MoviePresenterService(this);
         presenter.getMovies();
+
+        buttonSignOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                Intent it = new Intent(FirstPageActivity.this, MainActivity.class);
+                startActivity(it);
+            }
+        });
     }
 
     private void configurateAdapter(){
