@@ -26,11 +26,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    private TextView buttonRegister, buttonSignIn, signInButtonGoogle;
+    private TextView buttonRegister, buttonSignIn, buttonSignInGoogle;
 
-//    private SignInButton signInButtonGoogle;
     private GoogleSignInClient googleSignInClient;
     private FirebaseAuth firebaseAuth;
 
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener(){
                 @Override
                     public void onClick(View v){
-                        Intent it = new Intent(MainActivity.this, RegisterActivity.class);
+                        Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
                         startActivity(it);
                 }
         });
@@ -56,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
         buttonSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent it = new Intent(MainActivity.this, FirstPageActivity.class);
+                Intent it = new Intent(LoginActivity.this, FirstPageActivity.class);
                 startActivity(it);
             }
         });
 
-        signInButtonGoogle = findViewById(R.id.botaoSignInGoogle);
+        buttonSignInGoogle = findViewById(R.id.botaoSignInGoogle);
         firebaseAuth = FirebaseAuth.getInstance();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        signInButtonGoogle.setOnClickListener(new View.OnClickListener() {
+        buttonSignInGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
@@ -99,10 +98,9 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
         try{
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-//            Toast.makeText(MainActivity.this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
             FirebaseGoogleAuth(acc);
         }catch (ApiException e){
-            Toast.makeText(MainActivity.this, "Signed In Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Signed In Failed", Toast.LENGTH_SHORT).show();
             FirebaseGoogleAuth(null);
         }
     }
@@ -113,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent it = new Intent(MainActivity.this, FirstPageActivity.class);
+                    Intent it = new Intent(LoginActivity.this, FirstPageActivity.class);
                     startActivity(it);
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     updateUI(user);
                 }else{
-                    Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
             }
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             String personId = account.getId();
             Uri personPhoto = account.getPhotoUrl();
 
-            Toast.makeText(MainActivity.this, "Welcome " + personName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Welcome " + personName, Toast.LENGTH_SHORT).show();
         }
     }
 }

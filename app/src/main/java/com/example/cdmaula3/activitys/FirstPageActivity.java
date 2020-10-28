@@ -2,6 +2,10 @@ package com.example.cdmaula3.activitys;
 
 
 import android.app.ActivityOptions;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,9 +15,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cdmaula3.R;
 import com.example.cdmaula3.models.Movie;
@@ -51,7 +52,7 @@ public class FirstPageActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 firebaseAuth.signOut();
-                Intent it = new Intent(FirstPageActivity.this, MainActivity.class);
+                Intent it = new Intent(FirstPageActivity.this, LoginActivity.class);
                 startActivity(it);
             }
         });
@@ -91,17 +92,10 @@ public class FirstPageActivity extends AppCompatActivity
          bundle.putString("imgURL",movie.getPathPoster());
          bundle.putInt("coverPhoto",movie.getCoverPhoto());
          bundle.putString("overview", movie.getOverView());
-         //intent.putExtra("title", movie.getTitle());
-         //intent.putExtra("imgURL", movie.getPathPoster());
+
          intent.putExtras(bundle);
 
-//
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(FirstPageActivity.this);
-//
-          startActivity(intent);
-//
-//        Toast.makeText(this, "item clicked : " + movie.getTitle(), Toast.LENGTH_LONG).show();
-
+         startActivity(intent);
     }
 
 }
