@@ -22,7 +22,7 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
     private static itemClickListenerService movieItemClickListener;
 
     public MovieAdapterService(itemClickListenerService movieItemClickListener) {
-        this.movieItemClickListener = movieItemClickListener;
+        MovieAdapterService.movieItemClickListener = movieItemClickListener;
 
         movies = new ArrayList<>();
     }
@@ -49,6 +49,7 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
         private TextView tvTitle;
         private ImageView imageMovie;
         private Movie movie;
+        private TextView overview;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -56,11 +57,12 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
             tvTitle = itemView.findViewById(R.id.item_movie_title);
             imageMovie = itemView.findViewById(R.id.item_movie_img);
 
+
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
                     if(movieItemClickListener != null) {
-                        movieItemClickListener.onMovieClick(movie);
+                        movieItemClickListener.onMovieClick(movie, imageMovie);
                     }
                 }
             });
@@ -74,6 +76,7 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
             Picasso.get()
                     .load("https://image.tmdb.org/t/p/w342/" + movie.getPathPoster())
                     .into(imageMovie);
+
         }
 
     }
@@ -84,6 +87,6 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
     }
 
     public interface itemClickListenerService {
-        void onMovieClick(Movie movie);
+        void onMovieClick(Movie movie, ImageView movieImageView);
     }
 }

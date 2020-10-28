@@ -1,17 +1,19 @@
 package com.example.cdmaula3.activitys;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cdmaula3.R;
 import com.example.cdmaula3.models.Movie;
@@ -79,18 +81,27 @@ public class FirstPageActivity extends AppCompatActivity
         presenter.destroyView();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onMovieClick(Movie movie) {
+    public void onMovieClick(Movie movie, ImageView movieImageView) {
 
-//        Intent intent = new Intent(this, MovieDetailActivity.class);
-//        intent.putExtra("title", movie.getTitle());
-//        intent.putExtra("imgURL", movie.getPathPoster());
+         Intent intent = new Intent(this, MovieDetailActivity.class);
+         Bundle bundle = new Bundle();
+         bundle.putString("title",movie.getTitle());
+         bundle.putString("imgURL",movie.getPathPoster());
+         bundle.putInt("coverPhoto",movie.getCoverPhoto());
+         bundle.putString("overview", movie.getOverView());
+         //intent.putExtra("title", movie.getTitle());
+         //intent.putExtra("imgURL", movie.getPathPoster());
+         intent.putExtras(bundle);
+
 //
-//        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(FirstPageActivity.this);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(FirstPageActivity.this);
 //
-//        startActivity(intent, options.toBundle());
+          startActivity(intent);
 //
 //        Toast.makeText(this, "item clicked : " + movie.getTitle(), Toast.LENGTH_LONG).show();
 
     }
+
 }

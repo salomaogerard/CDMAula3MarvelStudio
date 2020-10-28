@@ -1,21 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieDetailActivity"
+    tools:context=".activitys.MovieDetailActivity"
     android:background="@color/colorPrimary">
 
-    <ImageView
-        android:transitionName="sharedName"
-        android:scaleType="centerCrop"
-        android:id="@+id/detail_movie_img"
-        android:layout_width="125dp"
-        android:layout_height="175dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avengers_endgame" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/detail_move_cover"
+            android:layout_width="wrap_content"
+            android:layout_height="245dp"
+            android:contentDescription="@string/imagempadrao"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/apres_la_pluie" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_move_cover"
+            app:layout_constraintEnd_toEndOf="@+id/detail_move_cover"
+            app:layout_constraintStart_toStartOf="@+id/detail_move_cover"
+            app:layout_constraintTop_toTopOf="@+id/detail_move_cover"
+            app:srcCompat="@drawable/gradient_bg" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/play_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:tint="#0E0E0E"
+            app:backgroundTint="#F40C0C"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_move_cover"
+            app:layout_constraintEnd_toEndOf="@+id/detail_move_cover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_move_cover"
+            app:rippleColor="#DA0707"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <ImageView
+            android:id="@+id/detail_movie_img"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
+            android:layout_marginStart="24dp"
+            android:contentDescription="@string/avengers_image"
+            android:scaleType="centerCrop"
+            android:transitionName="sharedName"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_move_cover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_move_cover"
+            app:layout_constraintVertical_bias="0.531"
+            app:srcCompat="@drawable/avengers_endgame" />
+
+        <TextView
+            android:textColor="@android:color/white"
+            android:id="@+id/detail_move_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/titutlo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
+            app:layout_constraintTop_toBottomOf="@+id/detail_move_cover" />
+
+        <TextView
+            android:lineSpacingExtra="8dp"
+            android:id="@+id/detail_movie_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/simple_text"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
