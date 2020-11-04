@@ -14,8 +14,8 @@
         <activity android:name=".activitys.RegisterActivity"/>
         <activity android:name=".activitys.FirstPageActivity"/>
         <activity android:name=".activitys.MovieDetailActivity"/>
-        <activity android:name=".activitys.LoginActivity"/>
-        <activity android:name=".activitys.SplashActivity">
+        <activity android:name=".activitys.SplashActivity"/>
+        <activity android:name=".activitys.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

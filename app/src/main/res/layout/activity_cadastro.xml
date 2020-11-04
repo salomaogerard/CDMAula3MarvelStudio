@@ -8,7 +8,7 @@
     tools:context=".activitys.RegisterActivity">
 
     <Button
-        android:id="@+id/botaoClean"
+        android:id="@+id/botaoCancel"
         android:layout_width="335dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -16,7 +16,7 @@
         android:background="@drawable/rounded_button"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/clean"
+        android:text="@string/cancel"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
