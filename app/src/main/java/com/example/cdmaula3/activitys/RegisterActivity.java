@@ -25,17 +25,17 @@ public class RegisterActivity extends AppCompatActivity  implements  View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_register);
 
 
         editText_Email = (EditText)findViewById(R.id.registerEmail);
-        editText_Password = (EditText)findViewById(R.id.registerSenha);
-        editText_ConfirmPassword = (EditText)findViewById(R.id.registerConfirmarSenha);
-
-        button_Register = (Button)findViewById(R.id.botaoSignUp);
-        button_Cancel = (Button)findViewById(R.id.botaoCancel);
+        editText_Password = (EditText)findViewById(R.id.registerPassword);
+        editText_ConfirmPassword = (EditText)findViewById(R.id.registerConfirmPassword);
+        button_Register = (Button)findViewById(R.id.buttonSignUp);
+        button_Cancel = (Button)findViewById(R.id.buttonCancel);
 
         button_Register.setOnClickListener(this);
+        button_Cancel.setOnClickListener(this);
 
         auth = FirebaseAuth.getInstance();
     }
@@ -43,8 +43,11 @@ public class RegisterActivity extends AppCompatActivity  implements  View.OnClic
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.botaoSignUp:
+            case R.id.buttonSignUp:
                 register();
+                break;
+            case R.id.buttonCancel:
+                cancel();
                 break;
         }
     }
@@ -65,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity  implements  View.OnClic
         }
     }
 
-    private void createNewUser(String email, String password){
+    private void createNewUser(final String email, final String password){
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -73,10 +76,17 @@ public class RegisterActivity extends AppCompatActivity  implements  View.OnClic
                     Intent it = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(it);
                     Toast.makeText(getBaseContext(), "Cadastro efetuado com Sucesso", Toast.LENGTH_LONG).show();
+                }else if(task.getException().toString().equalsIgnoreCase(getString(R.string.error_account_already_exists))){
+                    Toast.makeText(getBaseContext(), "O endereço de email já está sendo usado! Logue e vincule na aba Usuario!", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(getBaseContext(), "Erro ao Cadastrar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Erro ao Cadastrar " + task.getException(), Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    private void cancel(){
+        Intent it = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(it);
     }
 }

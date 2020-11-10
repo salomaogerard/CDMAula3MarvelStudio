@@ -8,8 +8,8 @@
     tools:context=".activitys.RegisterActivity">
 
     <Button
-        android:id="@+id/botaoCancel"
-        android:layout_width="335dp"
+        android:id="@+id/buttonCancel"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -21,11 +21,11 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp" />
 
     <Button
-        android:id="@+id/botaoSignUp"
-        android:layout_width="335dp"
+        android:id="@+id/buttonSignUp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -37,10 +37,10 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerConfirmarSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/registerConfirmPassword" />
 
     <EditText
-        android:id="@+id/registerConfirmarSenha"
+        android:id="@+id/registerConfirmPassword"
         android:layout_width="335dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
@@ -55,10 +55,10 @@
         android:paddingRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
     <EditText
-        android:id="@+id/registerSenha"
+        android:id="@+id/registerPassword"
         android:layout_width="335dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"

@@ -51,7 +51,7 @@
         android:paddingRight="20dp" />
 
     <Button
-        android:id="@+id/botaoSignIn"
+        android:id="@+id/buttonSignInEmail"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/password"
@@ -65,12 +65,12 @@
         android:focusable="true" />
 
     <Button
-        android:id="@+id/botaoSignInGoogle"
+        android:id="@+id/buttonSignInGoogle"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:paddingStart="30dp"
         android:paddingEnd="20dp"
-        android:layout_below="@+id/botaoSignIn"
+        android:layout_below="@+id/buttonSignInEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:drawableStart="@drawable/googleg_standard_color_18"
@@ -82,7 +82,7 @@
         android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/botaoSignInGoogle"
+        android:layout_below="@+id/buttonSignInGoogle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:clickable="true"

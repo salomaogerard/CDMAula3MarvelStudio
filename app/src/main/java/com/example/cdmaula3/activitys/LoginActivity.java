@@ -24,14 +24,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editText_Email, editText_Password;
-    private TextView button_register, button_LoginEmail, button_LoginGoogle, button_RecoverPassword;
+    private Button button_LoginEmail, button_LoginGoogle;
+    private TextView button_Register, button_RecoverPassword;
 
     private GoogleSignInClient googleSignInClient;
     private FirebaseAuth firebaseAuth;
@@ -47,11 +49,15 @@ public class LoginActivity extends AppCompatActivity{
 
         editText_Email = (EditText)findViewById(R.id.email);
         editText_Password = (EditText)findViewById(R.id.password);
-        button_LoginGoogle = findViewById(R.id.botaoSignInGoogle);
-        button_LoginEmail = findViewById(R.id.botaoSignIn);
-        button_RecoverPassword = findViewById(R.id.forgetPassword);
-        button_register = findViewById(R.id.register);
+        button_LoginGoogle = (Button)findViewById(R.id.buttonSignInGoogle);
+        button_LoginEmail = (Button)findViewById(R.id.buttonSignInEmail);
+        button_RecoverPassword = (TextView)findViewById(R.id.forgetPassword);
+        button_Register = (TextView)findViewById(R.id.register);
 
+        button_LoginGoogle.setOnClickListener(this);
+        button_LoginEmail.setOnClickListener(this);
+        button_RecoverPassword.setOnClickListener(this);
+        button_Register.setOnClickListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -62,31 +68,34 @@ public class LoginActivity extends AppCompatActivity{
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        button_LoginGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.buttonSignInGoogle:
                 signInWithGoogle();
-            }
-        });
-
-        button_LoginEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.buttonSignInEmail:
                 signInWithEmail();
-            }
-        });
+                break;
+            case R.id.forgetPassword:
+                forgetPassword();
+                break;
+            case R.id.register:
+                register();
+                break;
+        }
+    }
 
-        button_register.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(it);
-            }
-        });
+    private void forgetPassword(){
+        Intent it = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+        startActivity(it);
+    }
 
-        //        button_RecoverPassword.setOnClickListener(this);
-
-
+    private void register(){
+        Intent it = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(it);
     }
 
     private void signInWithEmail(){
@@ -134,7 +143,7 @@ public class LoginActivity extends AppCompatActivity{
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             FirebaseGoogleAuth(acc);
         }catch (ApiException e){
-            Toast.makeText(LoginActivity.this, "Signed In Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Erro ao logar", Toast.LENGTH_LONG).show();
             FirebaseGoogleAuth(null);
         }
     }
@@ -150,7 +159,7 @@ public class LoginActivity extends AppCompatActivity{
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     updateUI(user);
                 }else{
-                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Erro ao logar", Toast.LENGTH_LONG).show();
                     updateUI(null);
                 }
             }
@@ -167,7 +176,8 @@ public class LoginActivity extends AppCompatActivity{
             String personId = account.getId();
             Uri personPhoto = account.getPhotoUrl();
 
-            Toast.makeText(LoginActivity.this, "Welcome " + personName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Bem vindo " + personName, Toast.LENGTH_SHORT).show();
         }
     }
+
 }
