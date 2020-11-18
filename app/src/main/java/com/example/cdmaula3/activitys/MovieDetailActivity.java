@@ -1,9 +1,14 @@
 package com.example.cdmaula3.activitys;
 
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +27,31 @@ public class MovieDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
         iniViews();
+
+        /*int idFilme = 0;
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Uri uri = intent.getData();
+            String id = uri.getQueryParameter("id");
+            idFilme = Integer.parseInt(id);
+        } else {
+            if (intent.getType().equals("application/json")) {
+                try {
+                    Log.d("intent",intent.getExtras().toString());
+                    for(String k : intent.getExtras().keySet()) {
+                        Log.d("intent", k);
+                    }
+                    JSONObject json = new JSONObject(intent.getExtras().getString("json"));
+                    Log.e("intent",json.toString());
+                    idFilme = json.getInt("id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                idFilme = this.getIntent().getIntExtra("idFilme", 0);
+            }
+        }*/
     }
 
     void iniViews(){
@@ -47,5 +77,33 @@ public class MovieDetailActivity extends AppCompatActivity {
         //Setando a animação
         movieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
         play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
+    }
+
+    public void onClickShareTwitter(View v){
+        PackageManager pm = getPackageManager();
+        try {
+            Intent twitterIntent = new Intent(Intent.ACTION_SEND);
+            twitterIntent.setType("text/plain");
+            String text = "Assita esse filme...";
+            PackageInfo info = pm.getPackageInfo("com.twitter", PackageManager.GET_META_DATA);
+        }catch (PackageManager.NameNotFoundException e){
+
+            Toast.makeText(this, "Twitter não instalado", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onClickShareFilme(View v){
+        String idMovie = getIntent().getExtras().getString("id");
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra("json","{\"id\":40097}");
+        sendIntent.setType("application/json");
+
+        if(sendIntent.resolveActivity(getPackageManager()) != null){
+            startActivity(sendIntent);
+        }else{
+
+            Toast.makeText(getApplicationContext(),"Sem activity para abrir o json", Toast.LENGTH_SHORT).show();
+        }
     }
 }

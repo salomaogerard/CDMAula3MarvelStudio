@@ -2,6 +2,7 @@ package com.example.cdmaula3.models;
 
 public class Movie {
 
+    private String idMovie;
     private String title;
     private String overView;
     private String pathPoster;
@@ -9,7 +10,8 @@ public class Movie {
     private int coverPhoto;
 
 
-    public Movie(String title, int thumbnail, int coverPhoto) {
+    public Movie(String title, int thumbnail, int coverPhoto, String idMovie) {
+        this.idMovie = idMovie;
         this.title = title;
         this.thumbnail = thumbnail;
         this.coverPhoto = coverPhoto;
@@ -21,11 +23,20 @@ public class Movie {
         this.pathPoster = pathPoster;
     }
 
-    public Movie(String title, String pathPoster, String overView) {
+    public Movie(String title, String pathPoster, String overView, String idMovie) {
+         this.idMovie = idMovie;
         this.title = title;
         this.pathPoster = pathPoster;
         this.overView = overView;
 
+    }
+
+    public String getIdMovie() {
+        return idMovie;
+    }
+
+    public void setIdMovie(String idMovie) {
+        this.idMovie = idMovie;
     }
 
     public String getTitle() {

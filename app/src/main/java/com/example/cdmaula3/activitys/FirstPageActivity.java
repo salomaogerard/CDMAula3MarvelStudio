@@ -1,11 +1,6 @@
 package com.example.cdmaula3.activitys;
 
 
-import android.app.ActivityOptions;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cdmaula3.R;
 import com.example.cdmaula3.models.Movie;
@@ -88,6 +86,7 @@ public class FirstPageActivity extends AppCompatActivity
 
          Intent intent = new Intent(this, MovieDetailActivity.class);
          Bundle bundle = new Bundle();
+         bundle.putString("id",movie.getIdMovie());
          bundle.putString("title",movie.getTitle());
          bundle.putString("imgURL",movie.getPathPoster());
          bundle.putInt("coverPhoto",movie.getCoverPhoto());
