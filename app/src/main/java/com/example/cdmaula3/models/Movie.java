@@ -1,31 +1,69 @@
 package com.example.cdmaula3.models;
 
-public class Movie {
+import android.os.Parcel;
+import android.os.Parcelable;
 
+public class Movie implements Parcelable {
+
+    private String idMovie;
     private String title;
     private String overView;
     private String pathPoster;
     private int thumbnail;
-    private int coverPhoto;
+    private String coverPhoto;
 
 
-    public Movie(String title, int thumbnail, int coverPhoto) {
-        this.title = title;
-        this.thumbnail = thumbnail;
+    protected Movie(Parcel in) {
+        idMovie = in.readString();
+        title = in.readString();
+        overView = in.readString();
+        pathPoster = in.readString();
+        thumbnail = in.readInt();
+        coverPhoto = in.readString();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(idMovie);
+        parcel.writeString(title);
+        parcel.writeString(overView);
+        parcel.writeString(pathPoster);
+        parcel.writeInt(thumbnail);
+        parcel.writeString(coverPhoto);
+    }
+
+    public Movie(String title, String pathPoster, String overView, String idMovie, String coverPhoto) {
         this.coverPhoto = coverPhoto;
-    }
-
-
-    public Movie(String title, String pathPoster) {
-        this.title = title;
-        this.pathPoster = pathPoster;
-    }
-
-    public Movie(String title, String pathPoster, String overView) {
+        this.idMovie = idMovie;
         this.title = title;
         this.pathPoster = pathPoster;
         this.overView = overView;
 
+    }
+
+    public String getIdMovie() {
+        return idMovie;
+    }
+
+    public void setIdMovie(String idMovie) {
+        this.idMovie = idMovie;
     }
 
     public String getTitle() {
@@ -60,11 +98,13 @@ public class Movie {
         this.thumbnail = thumbnail;
     }
 
-    public int getCoverPhoto() {
+    public String getCoverPhoto() {
         return coverPhoto;
     }
 
-    public void setCoverPhoto(int coverPhoto) {
+    public void setCoverPhoto(String coverPhoto) {
         this.coverPhoto = coverPhoto;
     }
+
+
 }

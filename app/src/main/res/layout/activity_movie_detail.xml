@@ -13,15 +13,13 @@
 
         <ImageView
             android:id="@+id/detail_move_cover"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="245dp"
             android:contentDescription="@string/imagempadrao"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/apres_la_pluie" />
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -75,19 +73,28 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_move_cover" />
 
         <TextView
-            android:lineSpacingExtra="8dp"
             android:id="@+id/detail_movie_desc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="391dp"
+            android:layout_height="365dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:lineSpacingExtra="8dp"
             android:text="@string/simple_text"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
 
+        <Button
+            android:id="@+id/buttonShare"
+            android:text="Share"
+            android:onClick="onClickShareFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.core.widget.NestedScrollView>

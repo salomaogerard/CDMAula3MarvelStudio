@@ -1,7 +1,6 @@
 package com.example.cdmaula3.activitys;
 
 
-import android.app.ActivityOptions;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +28,7 @@ public class FirstPageActivity extends AppCompatActivity
         implements MovieContractServic.listMoviesView,
         MovieAdapterService.itemClickListenerService {
 
-    private MovieAdapterService movieAdapter;
+    private MovieAdapterService movieAdapter, movieAdapter2;
     private MovieContractServic.listMoviesPresenter presenter;
     private Button buttonSignOut;
     private FirebaseAuth firebaseAuth;
@@ -42,7 +41,7 @@ public class FirstPageActivity extends AppCompatActivity
 
         configurateAdapter();
 
-        buttonSignOut = findViewById(R.id.buttonSignOut);
+        buttonSignOut = (Button)findViewById(R.id.buttonSignOut);
         firebaseAuth = FirebaseAuth.getInstance();
 
         presenter = new MoviePresenterService(this);
@@ -64,11 +63,17 @@ public class FirstPageActivity extends AppCompatActivity
         movieAdapter = new MovieAdapterService( this);
         recyclerMovies.setAdapter(movieAdapter);
         recyclerMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        final RecyclerView recyclerMovies2 = findViewById(R.id.Rv_movies);
+        movieAdapter2 = new MovieAdapterService( this);
+        recyclerMovies2.setAdapter(movieAdapter2);
+        recyclerMovies2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
     @Override
     public void showMovies(List<Movie> movies) {
         movieAdapter.setMovies(movies);
+        movieAdapter2.setMovies(movies);
     }
 
     @Override
@@ -88,12 +93,14 @@ public class FirstPageActivity extends AppCompatActivity
 
          Intent intent = new Intent(this, MovieDetailActivity.class);
          Bundle bundle = new Bundle();
+         bundle.putString("id", movie.getIdMovie());
          bundle.putString("title",movie.getTitle());
          bundle.putString("imgURL",movie.getPathPoster());
-         bundle.putInt("coverPhoto",movie.getCoverPhoto());
+         bundle.putString("coverPhoto",movie.getCoverPhoto());
          bundle.putString("overview", movie.getOverView());
 
          intent.putExtras(bundle);
+         intent.putExtra("objeto", movie);
 
          startActivity(intent);
     }
