@@ -1,6 +1,8 @@
 package com.example.cdmaula3.activitys;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -13,7 +15,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cdmaula3.R;
-import com.example.cdmaula3.models.Movie;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
@@ -83,6 +84,20 @@ public class MovieDetailActivity extends AppCompatActivity {
         play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
 
         getSupportActionBar().setTitle(movieTitle);
+    }
+
+
+    public void onClickShareTwitter(View v){
+        PackageManager pm = getPackageManager();
+        try {
+            Intent twitterIntent = new Intent(Intent.ACTION_SEND);
+            twitterIntent.setType("text/plain");
+            String text = "Assita esse filme...";
+            PackageInfo info = pm.getPackageInfo("com.twitter", PackageManager.GET_META_DATA);
+        }catch (PackageManager.NameNotFoundException e){
+
+            Toast.makeText(this, "Twitter não instalado", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClickShareFilme(View v){
