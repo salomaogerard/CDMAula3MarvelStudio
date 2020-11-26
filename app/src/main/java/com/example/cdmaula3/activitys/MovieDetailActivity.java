@@ -15,14 +15,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cdmaula3.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
     private ImageView movieThumbnailImg, movieCoverImg;
     private TextView tv_title, tv_description;
-    private FloatingActionButton play_fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +79,6 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         //Setando a animação
         movieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
-        play_fab.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animation));
 
         getSupportActionBar().setTitle(movieTitle);
     }

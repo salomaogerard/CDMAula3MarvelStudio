@@ -11,12 +11,15 @@ public interface MovieContractServic {
         void showMovies(List<Movie> movies);
 
         void showError();
+
     }
+
 
     interface listMoviesPresenter {
 
         void getMovies();
 
         void destroyView();
+        
     }
 }

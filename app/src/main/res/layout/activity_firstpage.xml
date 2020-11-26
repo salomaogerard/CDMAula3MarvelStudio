@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="1000dp"
@@ -22,14 +24,6 @@
         android:alpha="0.75"
         android:text="Play" />
 
-    <Button
-        android:id="@+id/buttonSignOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Sign Out" />
-
     <TextView
         android:id="@+id/moreViews"
         android:textColor="@color/colorWhite"
@@ -44,12 +38,37 @@
         app:layout_constraintTop_toBottomOf="@id/imageView"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Rv_movies"
+        android:id="@+id/Rv_popularMovies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
+        android:layout_below="@id/moreViews"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toBottomOf="@id/moreViews"/>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/popularWeek"
+        android:textColor="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Rv_popularMovies"
+        android:text="Populares este ano"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Rv_popularMovies"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Rv_popularWeekMovies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/popularWeek"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"/>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

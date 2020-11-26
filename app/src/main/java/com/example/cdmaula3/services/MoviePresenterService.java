@@ -23,7 +23,7 @@ public class MoviePresenterService  implements MovieContractServic.listMoviesPre
     @Override
     public void getMovies() {
         ApiService.getInstance()
-                .getMovies("925a69a753e473247f378bba545563e8")
+                .getPopularMovies("925a69a753e473247f378bba545563e8")
                 .enqueue(new Callback<MoviesResult>() {
                     @Override
                     public void onResponse(Call<MoviesResult> call, Response<MoviesResult> response) {
@@ -49,6 +49,5 @@ public class MoviePresenterService  implements MovieContractServic.listMoviesPre
     public void destroyView() {
         this.view = null;
     }
-
 
 }

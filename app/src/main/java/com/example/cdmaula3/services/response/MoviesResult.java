@@ -16,4 +16,5 @@ public class MoviesResult {
     public List<MoviesResponse> getMoviesResults() {
         return moviesResults;
     }
+
 }

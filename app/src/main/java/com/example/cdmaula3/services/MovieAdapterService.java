@@ -76,7 +76,6 @@ public class MovieAdapterService extends RecyclerView.Adapter<MovieAdapterServic
             Picasso.get()
                     .load("https://image.tmdb.org/t/p/w342/" + movie.getPathPoster())
                     .into(imageMovie);
-
         }
 
     }
