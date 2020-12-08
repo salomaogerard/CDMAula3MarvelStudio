@@ -1,5 +1,7 @@
 package com.example.cdmaula3.services.response;
 
+import android.util.Log;
+
 import com.squareup.moshi.Json;
 
 import java.util.List;

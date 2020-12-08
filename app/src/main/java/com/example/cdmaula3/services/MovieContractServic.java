@@ -14,10 +14,21 @@ public interface MovieContractServic {
 
     }
 
+    interface ListOneMovie {
+
+        void showInfo(Movie movie);
+
+        void showError();
+    }
+
 
     interface listMoviesPresenter {
 
         void getMovies();
+
+        void getPopularMovies();
+
+        void getMovieWithId(String id);
 
         void destroyView();
         

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ public class FirstPageActivity extends AppCompatActivity
         implements MovieContractServic.listMoviesView,
         MovieAdapterService.itemClickListenerService {
 
+    public static final String INFO_TYPE = "INFO_TYPE";
     private MovieAdapterService movieAdapter, movieAdapter2;
     private MovieContractServic.listMoviesPresenter presenter;
     private FirebaseAuth firebaseAuth;
@@ -46,6 +48,21 @@ public class FirstPageActivity extends AppCompatActivity
         presenter = new MoviePresenterService(this);
         presenter.getMovies();
 
+        presenter = new MoviePresenterService(this);
+        presenter.getPopularMovies();
+
+//        this.getType();
+    }
+
+    private void getType() {
+        if(getIntent().getStringExtra(INFO_TYPE).equals("favorite")) {
+            presenter = new MoviePresenterService(this);
+            presenter.getMovies();
+        }
+        else if(getIntent().getStringExtra(INFO_TYPE).equals("popular")){
+            presenter = new MoviePresenterService(this);
+            presenter.getPopularMovies();
+        }
     }
 
     private void configurateAdapter(){
@@ -82,18 +99,12 @@ public class FirstPageActivity extends AppCompatActivity
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
 
-         Intent intent = new Intent(this, MovieDetailActivity.class);
-         Bundle bundle = new Bundle();
-         bundle.putString("id", movie.getIdMovie());
-         bundle.putString("title",movie.getTitle());
-         bundle.putString("imgURL",movie.getPathPoster());
-         bundle.putString("coverPhoto",movie.getCoverPhoto());
-         bundle.putString("overview", movie.getOverView());
+        Intent intent = new Intent(this, MovieDetailActivity.class);
 
-         intent.putExtras(bundle);
-         intent.putExtra("objeto", movie);
+        intent.putExtra("objeto", movie);
+        intent.setAction(Intent.ACTION_SEND);
 
-         startActivity(intent);
+        startActivity(intent);
     }
 
 
