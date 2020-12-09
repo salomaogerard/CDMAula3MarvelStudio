@@ -1,14 +1,16 @@
 package com.example.cdmaula3.activitys;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +29,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 
+import static android.hardware.Sensor.TYPE_LIGHT;
+
 public class MovieDetailActivity extends AppCompatActivity implements DetailContract.ListDetailView {
 
     public static final String INFO_MOVIE = "INFO_MOVIE";
@@ -34,11 +38,46 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailCont
     private TextView tv_title, tv_description;
     private Movie movie;
     private DetailContract.ListDetailPresenter presenter;
+    private SensorManager sensorManager;
+    private Sensor lightSensor;
+    private SensorEventListener lightEventListener;
+    private View root;
+    private float maxValue;
+    private TextView movieDesc, shareText, movieTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+        root = findViewById(R.id.root);
+        movieDesc = findViewById(R.id.detail_movie_desc);
+        shareText = findViewById(R.id.text_share);
+        movieTitle = findViewById(R.id.detail_move_title);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        lightSensor = sensorManager.getDefaultSensor(TYPE_LIGHT);
+            if(lightSensor == null){
+                Toast.makeText(this,"Dispositivo não possui sensor de luminosidade.",Toast.LENGTH_SHORT).show();
+            }
+        maxValue = lightSensor.getMaximumRange();
+            lightEventListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    float value = event.values[0];
+
+                        int nValor = (int) (255f * value/maxValue);
+                        int vValor = (int) (255f / value / maxValue);
+                        root.setBackgroundColor(Color.rgb(nValor,nValor,nValor));
+                        movieTitle.setTextColor(Color.rgb(vValor,vValor,vValor));
+                        movieDesc.setTextColor(Color.rgb(vValor,vValor,vValor));
+                        shareText.setTextColor(Color.rgb(vValor,vValor,vValor));
+
+                }
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+                }
+            };
 
 
         Intent it = getIntent();
@@ -46,7 +85,7 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailCont
         try {
             if(it.getAction().equals(Intent.ACTION_SEND)){
 
-                movie = (Movie) it.getParcelableExtra("objeto");
+                movie = it.getParcelableExtra("objeto");
 
             }
 
@@ -63,6 +102,17 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailCont
         }else {
             iniViews();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(lightEventListener,lightSensor,SensorManager.SENSOR_DELAY_FASTEST);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(lightEventListener);
     }
 
     void iniViews(){

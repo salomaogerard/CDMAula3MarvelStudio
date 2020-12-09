@@ -32,4 +32,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="efeito_gradiente">efeito_gradiente</string>
+    <string name="share">Share</string>
+    <string name="icone_wpp">icone_wpp</string>
+    <string name="share_via">Share via:</string>
 </resources>

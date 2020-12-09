@@ -19,13 +19,13 @@ public class MovieMapper {
         return movieList;
     }
 
-    public static Movie toResponseAtDomineOne(MoviesResponse movieResponse) {
+    /*public static Movie toResponseAtDomineOne(MoviesResponse movieResponse) {
 
         final Movie movie = new Movie(movieResponse.getOriginalTitle(),
                 movieResponse.getPosterPath(), movieResponse.getOverView(),
                 movieResponse.getCoverPhoto(), movieResponse.getIdMovie());
 
         return movie;
-    }
+    }*/
 
 }

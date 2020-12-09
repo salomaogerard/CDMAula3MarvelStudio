@@ -5,7 +5,7 @@ import com.squareup.moshi.Json;
 public class MoviesResponse {
 
     @Json(name = "id")
-    private final String idMovie;
+    private final Integer idMovie;
 
     @Json(name = "poster_path")
     private final String posterPath;
@@ -19,7 +19,7 @@ public class MoviesResponse {
     @Json(name = "backdrop_path")
     private final String coverPhoto;
 
-    public MoviesResponse(String posterPath, String originalTitle, String overView, String idMovie, String coverPhoto) {
+    public MoviesResponse(String posterPath, String originalTitle, String overView, Integer idMovie, String coverPhoto) {
         this.coverPhoto = coverPhoto;
         this.idMovie = idMovie;
         this.posterPath = posterPath;
@@ -31,7 +31,7 @@ public class MoviesResponse {
         return coverPhoto;
     }
 
-    public String getIdMovie() {
+    public Integer getIdMovie() {
         return idMovie;
     }
 
